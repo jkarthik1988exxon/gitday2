@@ -1,0 +1,13 @@
+---
+- hosts: machine2
+  become: yes
+  tasks:
+    - name: create testuser
+      user: 
+        name: testuser
+        uid: 1101  
+        group: sudo
+        state: present
+        shell: /bin/false
+
+

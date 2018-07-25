@@ -1,0 +1,25 @@
+---
+- hosts: machine2
+  become: yes
+  vars:
+    - var1: variable1
+    - var2: variable2
+  vars_prompt:
+    - name: var3
+      prompt: enter username
+    - name: var4
+      prompt: enter uid
+  
+  tasks:
+    - name: task1
+      shell: echo '{{ var1 }}' > /home/ansible/variable.txt
+    - name: task2
+      file:
+        path: '/home/ansible/{{ var1 }}.txt'
+        state: touch
+    - name: create user
+      user:
+        name: '{{ var3 }}'
+        state: present
+        uid: '{{ var4 }}'
+

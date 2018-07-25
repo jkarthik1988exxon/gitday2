@@ -1,0 +1,9 @@
+---
+- hosts: machine2
+  tasks:
+    - name: blocktask
+      block:
+        - ping:
+        - file: 
+            path: /home/ansible/block.txt
+            state: touch

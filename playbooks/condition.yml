@@ -1,0 +1,6 @@
+---
+- hosts: machine2
+  tasks:
+    - name: check
+      file: path=/home/ansible/check.txt state=touch
+      when: ansible_os_family == 'Redhat' or ansible_hostname == 'machine2'

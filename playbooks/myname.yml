@@ -1,0 +1,6 @@
+---
+- hosts: machine2
+  become: yes
+  tasks:
+    - name: echo name
+      shell: "echo 'KARTHIK' > /var/www/html/index.html"

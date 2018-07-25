@@ -1,0 +1,27 @@
+---
+
+- hosts: all
+  tasks:
+    - name: ping machine2
+      ping: 
+    - file:
+        path: /home/ansible/four.txt 
+        state: touch  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

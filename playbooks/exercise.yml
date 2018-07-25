@@ -1,0 +1,26 @@
+---
+- hosts: machine2
+  become: yes
+  tasks:
+    - name: create user
+      become: yes
+      user:
+        name: excuser
+        password: '$6$j0rlOeG0$iKfoSVskuZub0nF4WeeV/i5R6rcsMLxXiqLkwXSGYixnEDhUDuN8kh7QwgCDM9bDbJUITy.ozJpXztjjvVgdk1'
+        group: sudo
+        state: present
+
+    - name: cron for excuser
+#      become_user: excuser
+      cron:
+        user: excuser
+        job: 'logger hello'
+#        shell: echo "excuser" > /home/ansible/exercise.txt
+        minute: "*/5"
+    - name: ssh for excuser
+      become_user: excuser
+      file:
+        path: /home/excuser/test.txt
+        state: touch
+           
+
